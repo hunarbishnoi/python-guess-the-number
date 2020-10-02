@@ -1,65 +1,67 @@
+
+
 import random
 
- 3.
+import math
 
- 4. guessesTaken = 0
+ # Taking Inputs
 
- 5.
+lower = int(input("Emter Lower bound:- ")) 
+ 
+# Taking Inputs
 
- 6. print('Hello! What is your name?')
+upper = int(input("Enter Upper bound:- "))  
+ 
+# generating random number between
+# the lower and upper
 
- 7. myName = input()
+x = random.randint(lower, upper)
 
- 8.
+print("\n\tYou've only ", round(math.log(upper - lower + 1, 2))," chances to guess the integer!\n")
+ 
 
- 9. number = random.randint(1, 20)
+ # Initializing the number of guesses.
 
-10. print('Well, ' + myName + ', I am thinking of a number between 1 and 20.')
+count = 0
+ 
+# for calculation of minimum number of
+# guesses depends upon range
 
-11.
+while count < math.log(upper - lower + 1, 2):
 
-12. while guessesTaken < 6:
+    count += 1
 
-13.     print('Take a guess.') # There are four spaces in front of print.
+     
 
-14.     guess = input()
+     # taking guessing number as input
 
-15.     guess = int(guess)
+    guess = int(input("Guess a number:- ")) 
 
-16.
+     
 
-17.     guessesTaken = guessesTaken + 1
+    # Condition testing
 
-18.
+    if x == guess:  
 
-19.     if guess < number:
+       print("Congratulations you did it in ", count, " try")
 
-20.         print('Your guess is too low.') # There are eight spaces in front of print.
+       # Once guessed, loop will break 
 
-21.
+       break
 
-22.     if guess > number:
+    elif x > guess:
 
-23.         print('Your guess is too high.')
+       print("You guessed too small!")
 
-24.
+    elif x < guess:
 
-25.     if guess == number:
+       print("You Guessed too high!")
+ 
+# If Guessing is more than required guesses, 
+# shows this output.
 
-26.         break
+if count >= math.log(upper - lower + 1, 2):
 
-27.
+   print("\nThe number is %d"%x)
 
-28. if guess == number:
-
-29.     guessesTaken = str(guessesTaken)
-
-30.     print('Good job, ' + myName + '! You guessed my number in ' + guessesTaken + ' guesses!')
-
-31.
-
-32. if guess != number:
-
-33.     number = str(number)
-
-34.     print('Nope. The number I was thinking of was ' + number)
+   print("\tBetter Luck Next time!")
